@@ -27,7 +27,8 @@ def render_node(node_key):
                 elif "result" in opt:
                     st.session_state.current_node = "result"
                     st.session_state.result = opt["result"]
-    if st.session_state.current_node == "result":
+
+if st.session_state.current_node == "result":
     res = st.session_state.result
     st.success(f"**Condition:** {res['condition']}")
     st.info("**Assessment:** " + ", ".join(res["assessment"]))
@@ -35,6 +36,7 @@ def render_node(node_key):
     st.button("Start Over", on_click=reset)
 else:
     render_node(st.session_state.current_node)
+
 # App Title
 st.title("🩺 Emergency CDSS - Rule-Based")
 
