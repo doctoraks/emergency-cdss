@@ -1,0 +1,106 @@
+{
+  "start": {
+    "question": "🩺 Welcome to Emergency CDSS. Choose the main symptom:",
+    "options": {
+      "1": {"label": "Unconsciousness", "next": "unconscious_q1"},
+      "2": {"label": "Chest Pain", "next": "chest_pain_q1"},
+      "3": {"label": "Seizure or Fits", "next": "seizure_q1"},
+      "4": {"label": "Severe Trauma or Bleeding", "next": "trauma_q1"}
+    }
+  },
+  "unconscious_q1": {
+    "question": "Is the patient breathing?",
+    "options": {
+      "1": {
+        "label": "Yes",
+        "result": {
+          "condition": "Unconscious but breathing",
+          "assessment": ["Check pulse", "Assess airway"],
+          "action": [
+            "Place in recovery position",
+            "Call 108",
+            "Refer to higher center"
+          ]
+        }
+      },
+      "2": {
+        "label": "No",
+        "result": {
+          "condition": "Cardiac arrest suspected",
+          "assessment": ["Call for help", "Begin chest compressions"],
+          "action": ["Call 108 immediately", "Refer to emergency unit"]
+        }
+      }
+    }
+  },
+  "chest_pain_q1": {
+    "question": "Is the pain sudden and severe?",
+    "options": {
+      "1": {
+        "label": "Yes",
+        "result": {
+          "condition": "Possible Cardiac Emergency",
+          "assessment": ["Record onset time", "Teleconsult MO"],
+          "action": ["Give Ecosprin if advised", "Refer to ECG center"]
+        }
+      },
+      "2": {
+        "label": "No",
+        "result": {
+          "condition": "Non-critical Chest Pain",
+          "assessment": ["Check BP", "Monitor for changes"],
+          "action": ["Refer to PHC if worsens"]
+        }
+      }
+    }
+  },
+  "seizure_q1": {
+    "question": "Is the seizure ongoing?",
+    "options": {
+      "1": {
+        "label": "Yes",
+        "result": {
+          "condition": "Active Seizure",
+          "assessment": ["Protect from injury", "Do not restrain"],
+          "action": [
+            "Place on left side",
+            "Loosen clothing",
+            "Refer to higher center"
+          ]
+        }
+      },
+      "2": {
+        "label": "Stopped",
+        "result": {
+          "condition": "Post-Seizure",
+          "assessment": ["Check for injuries", "Record duration"],
+          "action": ["Observe and refer if recurring"]
+        }
+      }
+    }
+  },
+  "trauma_q1": {
+    "question": "Is there heavy bleeding?",
+    "options": {
+      "1": {
+        "label": "Yes",
+        "result": {
+          "condition": "Severe Trauma with Bleeding",
+          "assessment": ["Apply pressure", "Immobilize"],
+          "action": [
+            "Call 108",
+            "Refer to Trauma Center"
+          ]
+        }
+      },
+      "2": {
+        "label": "No",
+        "result": {
+          "condition": "Minor Trauma",
+          "assessment": ["Clean wound", "Check vitals"],
+          "action": ["Refer to PHC if needed"]
+        }
+      }
+    }
+  }
+}
