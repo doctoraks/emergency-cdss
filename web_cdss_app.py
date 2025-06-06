@@ -20,7 +20,7 @@ def render_node(node_key):
     st.markdown("### " + node["question"])
     if "options" in node:
         for opt_key, opt in node["options"].items():
-            if st.button(f"{opt_key}. {opt['label']}"):
+            if st.button(f"{opt_key}. {opt['label']}", key=f"{node_key}_{opt_key}"):
                 if "next" in opt:
                     st.session_state.current_node = opt["next"]
                     st.session_state.history.append((node_key, opt_key))
